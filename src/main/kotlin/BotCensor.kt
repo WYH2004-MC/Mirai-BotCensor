@@ -1,6 +1,7 @@
 package moe.wyh2004
 
 import com.baidu.aip.contentcensor.AipContentCensor
+import kotlinx.serialization.json.JsonPrimitive
 import moe.wyh2004.command.BotCensorCommand
 import moe.wyh2004.config.DefaultConfig
 import net.mamoe.mirai.console.command.CommandManager.INSTANCE.register
@@ -13,6 +14,7 @@ import net.mamoe.mirai.message.data.PlainText
 import net.mamoe.mirai.message.data.toMessageChain
 import net.mamoe.mirai.utils.info
 import org.json.JSONObject
+import java.util.*
 
 object BotCensor : KotlinPlugin(
     JvmPluginDescription(
@@ -31,13 +33,20 @@ object BotCensor : KotlinPlugin(
         initBaiduAip()
 
         GlobalEventChannel.subscribeAlways<MessagePreSendEvent> {
-            if (!DefaultConfig.WhiteList.contains(target.id) || !message.toString().contains("BotCensor")){
+            val lowerCaseMessage = message.toString().lowercase(Locale.getDefault())
+            if (!DefaultConfig.QQWhiteList.contains(target.id) && !DefaultConfig.MessageWhiteList.any { lowerCaseMessage.contains(it.lowercase(Locale.getDefault())) }){
                 for (msg in message.toMessageChain()) {
                     var resultType = false
                     val result = when (msg) {
                         is PlainText -> AipCensor.textCensor(client,msg)
-                        is Image -> AipCensor.imageCensor(client,msg)
-                        else -> JSONObject("null")
+                        is Image -> {
+                            if(DefaultConfig.ImageCensor){
+                                AipCensor.imageCensor(client,msg)
+                            }else{
+                                JSONObject(mapOf("conclusion" to JsonPrimitive("跳过")))
+                            }
+                        }
+                        else -> JSONObject(mapOf("conclusion" to JsonPrimitive("错误的消息类型")))
                     }
                     if (result.get("conclusion").equals("不合规")){
                         resultType = true
