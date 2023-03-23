@@ -1,0 +1,2 @@
+# Mirai-BotCensor
+使用百度智能云内容审核API实现Mirai机器人发送消息审核的插件
