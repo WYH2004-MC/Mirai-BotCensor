@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "moe.wyh2004"
-version = "0.1.1"
+version = "0.1.0"
 
 repositories {
     maven("https://maven.aliyun.com/repository/public")
@@ -15,5 +15,4 @@ repositories {
 }
 dependencies {
     implementation("com.baidu.aip:java-sdk:4.16.14")
-    implementation("com.google.code.gson:gson:2.10.1")
 }
