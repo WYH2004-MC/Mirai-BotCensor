@@ -33,9 +33,14 @@ object BotCensor : KotlinPlugin(
     }
 
     fun initBaiduAip(){
-        client = AipContentCensor(DefaultConfig.App_Id, DefaultConfig.App_Key, DefaultConfig.Secret_Key)
-        client.setConnectionTimeoutInMillis(2000)
-        client.setSocketTimeoutInMillis(60000)
+        client = AipContentCensor(
+            DefaultConfig.App_Id,
+            DefaultConfig.App_Key,
+            DefaultConfig.Secret_Key
+        ).apply {
+            setConnectionTimeoutInMillis(2000)
+            setSocketTimeoutInMillis(60000)
+        }
     }
 
     fun regConfig(){
