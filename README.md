@@ -2,7 +2,7 @@
 使用百度智能云内容审核API实现Mirai机器人发送消息审核的插件
 
 ### 下载&使用 Download & Use
-1. 从[Releases](https://github.com/VIPWYH2004/Mirai-BotCensor/releases/)下载最新的插件，并将其安装到Mirai运行环境的`/plugins/`目录下,并启动Mirai  
+1. 从[Releases](https://github.com/WYH2004-MC/Mirai-BotCensor/releases/)下载最新的插件，并将其安装到Mirai运行环境的`/plugins/`目录下,并启动Mirai  
 2. 第一次使用请前往`/config/moe.wyh2004.bot-censor/Config.yml`修改配置文件  
 3. 填写[百度智能云内容审核](https://console.bce.baidu.com/ai/#/ai/antiporn/overview/index)提供给你的AppID,AppKey,SecretKey  
 4. 完成后重启你的Mirai，或者使用`/botcensor reload`重载配置文件
