@@ -14,7 +14,7 @@ object BotCensor : KotlinPlugin(
     JvmPluginDescription(
         id = "moe.wyh2004.bot-censor",
         name = "BotCensor",
-        version = "0.1.2",
+        version = "0.1.3",
     ) {
         author("WYH2004")
     }
@@ -38,8 +38,8 @@ object BotCensor : KotlinPlugin(
             DefaultConfig.App_Key,
             DefaultConfig.Secret_Key
         ).apply {
-            setConnectionTimeoutInMillis(2000)
-            setSocketTimeoutInMillis(60000)
+            setConnectionTimeoutInMillis(DefaultConfig.Connection_Timeout)
+            setSocketTimeoutInMillis(DefaultConfig.Socket_Timeout)
         }
     }
 

@@ -48,6 +48,8 @@ object MsgPreSendCensor : ListenerHost {
                     }
                 }catch (e : JSONException){
                     BotCensor.logger.error("百度API返回数据有误，该消息未经过审核")
+                    BotCensor.logger.error(e)
+                    BotCensor.logger.error("result: $result")
                 }
                 if (resultType) break
             }

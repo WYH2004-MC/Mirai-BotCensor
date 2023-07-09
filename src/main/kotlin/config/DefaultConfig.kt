@@ -18,6 +18,12 @@ object DefaultConfig : AutoSavePluginConfig("Config"){
     @ValueDescription("此处填写百度云平台的SecretKey")
     val Secret_Key: String by value("ababababababab")
 
+    @ValueDescription("此处填写建立连接的超时时间（单位：毫秒）")
+    val Connection_Timeout : Int by value(10000)
+
+    @ValueDescription("此处填写连接传输数据的超时时间（单位：毫秒）")
+    val Socket_Timeout : Int by value(60000)
+
     @ValueDescription("号码白名单(列表内的QQ号或者QQ群号将不进行拦截)")
     val QQWhiteList: List<Long> by value(listOf(123456789,123456789,123456789))
 
