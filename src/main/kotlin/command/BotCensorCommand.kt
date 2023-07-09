@@ -35,7 +35,7 @@ object BotCensorCommand : CompositeCommand(
                     "版本：${BotCensor.version}\n" +
                     "作者: WYH2004\n" +
                     "项目地址:\n" +
-                    "https://github.com/VIPWYH2004/Mirai-BotCensor"
+                    "https://github.com/WYH2004-MC/Mirai-BotCensor"
         sendMessage(pluginInfo)
     }
 }
