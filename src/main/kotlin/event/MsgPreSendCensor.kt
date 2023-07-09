@@ -28,9 +28,9 @@ object MsgPreSendCensor : ListenerHost {
                     is Image -> {
                         if(DefaultConfig.ImageCensor){
                             AipCensor.imageCensor(BotCensor.client,msg)
-                        }else break
+                        }else continue
                     }
-                    else -> break
+                    else -> continue
                 }
                 try {
                     if (result.get("conclusion").equals("不合规")){
