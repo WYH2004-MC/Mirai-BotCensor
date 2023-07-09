@@ -14,7 +14,7 @@ object BotCensor : KotlinPlugin(
     JvmPluginDescription(
         id = "moe.wyh2004.bot-censor",
         name = "BotCensor",
-        version = "0.1.1",
+        version = "0.1.2",
     ) {
         author("WYH2004")
     }

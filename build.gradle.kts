@@ -3,11 +3,11 @@ plugins {
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.serialization") version kotlinVersion
 
-    id("net.mamoe.mirai-console") version "2.14.0"
+    id("net.mamoe.mirai-console") version "2.15.0-RC"
 }
 
 group = "moe.wyh2004"
-version = "0.1.0"
+version = "0.1.2"
 
 repositories {
     maven("https://maven.aliyun.com/repository/public")
