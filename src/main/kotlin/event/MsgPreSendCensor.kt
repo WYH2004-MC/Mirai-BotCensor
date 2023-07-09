@@ -20,8 +20,7 @@ object MsgPreSendCensor : ListenerHost {
     @EventHandler
     suspend fun MessagePreSendEvent.onEvent(){
         val lowerCaseMessage = message.toString().lowercase(Locale.getDefault())
-        if (!DefaultConfig.QQWhiteList.contains(target.id) && !DefaultConfig.MessageWhiteList.any { lowerCaseMessage.contains(it.lowercase(
-                Locale.getDefault())) }){
+        if ((!DefaultConfig.QQWhiteList.contains(target.id) && !DefaultConfig.MessageWhiteList.any { lowerCaseMessage.contains(it.lowercase(Locale.getDefault())) }) || DefaultConfig.MessageBlackList.any { lowerCaseMessage.contains(it.lowercase(Locale.getDefault())) }){
             for (msg in message.toMessageChain()) {
                 var resultType = false
                 val result = when (msg) {

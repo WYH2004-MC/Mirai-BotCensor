@@ -30,6 +30,9 @@ object DefaultConfig : AutoSavePluginConfig("Config"){
     @ValueDescription("消息白名单(列表内的文本在聊天中时将不进行拦截,不区分大小写)")
     val MessageWhiteList: List<String> by value(listOf("botcensor","hello","world"))
 
+    @ValueDescription("消息黑名单(列表内的文本在聊天中时将强制进行审核,不区分大小写)")
+    val MessageBlackList: List<String> by value(listOf("Test","black","list"))
+
     @ValueDescription("审核不通过发出下面的内容")
     val BlockMessage:String by value("*Filtered*")
 
