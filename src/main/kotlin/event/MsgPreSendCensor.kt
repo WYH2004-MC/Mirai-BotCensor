@@ -22,6 +22,7 @@ object MsgPreSendCensor : ListenerHost {
         val lowerCaseMessage = message.toString().lowercase(Locale.getDefault())
         if ((!DefaultConfig.QQWhiteList.contains(target.id) && !DefaultConfig.MessageWhiteList.any { lowerCaseMessage.contains(it.lowercase(Locale.getDefault())) }) || DefaultConfig.MessageBlackList.any { lowerCaseMessage.contains(it.lowercase(Locale.getDefault())) }){
             for (msg in message.toMessageChain()) {
+                BotCensor.logger.info("msg: $msg")
                 var resultType = false
                 val result = when (msg) {
                     is PlainText -> AipCensor.textCensor(BotCensor.client,msg)
